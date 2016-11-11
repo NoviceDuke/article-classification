@@ -17,6 +17,9 @@ class CreateCharactersTable extends Migration
             $table->increments('id');
             $table->intger('slip_id')->unsigned()->nullable();
             $table->intger('article_id')->unsigned()->nullable();
+            $table->intger('order')->unsigned()->unique();
+            $table->string('scribe');
+            $table->string('explanation');
             $table->timestamps();
         });
         //foreign key
