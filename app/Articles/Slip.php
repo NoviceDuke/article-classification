@@ -4,17 +4,16 @@ namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Slip extends Model
 {
-    //文章對應到多個竹簡
-    public function slip()
+    //對應到一篇文章
+    public function article()
     {
-      return $this->belongsToMany(Slip::class);
+      return $this->belongsTo(Article::class);
     }
-    //文章對應到多個文字
+    //對應到多個字
     public function character()
     {
       return $this->belongsToMany(Character::class);
     }
-    
 }

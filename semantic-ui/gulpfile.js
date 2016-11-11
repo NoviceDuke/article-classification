@@ -39,7 +39,7 @@ gulp.task('default', false, [
   'watch'
 ]);
 
-gulp.task('watch', 'Watch for site/theme changes', watch);
+gulp.task('swatch', 'Watch for site/theme changes', watch);
 
 gulp.task('build', 'Builds all files from source', build);
 gulp.task('build-javascript', 'Builds all javascript from source', buildJS);
