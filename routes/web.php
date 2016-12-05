@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('importData','ExcelController@importData');
+Route::get('download','ExcelController@download');
+Route::post('importArticle','ExcelController@importArticle');
+Route::post('importSlip','ExcelController@importSlip');
+Route::post('importCharacter','ExcelController@importCharacter');
+Route::post('Binding','ExcelController@relationship');
+
+
+Route::resource('article', 'Front\ArticleController');

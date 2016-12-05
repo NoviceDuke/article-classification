@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Articles\Slip;
+use App\Articles\Article;
+use App\Articles\Character ;
 
 class ArticleController extends Controller
 {
@@ -15,6 +18,10 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $slips = Slip::all();
+      //  $articles = Article::all();
+      //  $characters = Character::all();
+        return view('frontend.article.index' , compact('slips') );
     }
 
     /**

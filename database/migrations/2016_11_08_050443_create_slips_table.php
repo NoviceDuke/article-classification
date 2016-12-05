@@ -15,12 +15,14 @@ class CreateSlipsTable extends Migration
     {
         Schema::create('slips', function (Blueprint $table) {
             $table->increments('id');
-            $table->intger('order')->unsigned();
-            $table->intger('article_id')->unsigned();
+            $table->string('order');
+            $table->integer('article_id')->unsigned()->nullable();
+            $table->string('content')->nullable();
+            $table->binary('slip_pic')->nullable();
             $table->timestamps();
 
             //foreign key
-            $table->foreign('article_id')->references('id')->on('articles');
+           $table->foreign('article_id')->references('id')->on('articles');
         });
 
     }

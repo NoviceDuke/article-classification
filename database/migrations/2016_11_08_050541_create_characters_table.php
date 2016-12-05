@@ -15,16 +15,19 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->increments('id');
-            $table->intger('slip_id')->unsigned()->nullable();
-            $table->intger('article_id')->unsigned()->nullable();
-            $table->intger('order')->unsigned()->unique();
-            $table->string('scribe');
-            $table->string('explanation');
+            $table->integer('slip_id')->unsigned()->nullable();
+            $table->integer('article_id')->unsigned()->nullable();
+            $table->integer('order')->unsigned()->nullable();
+            $table->string('scribe')->nullable();
+            $table->string('explanation')->nullable();
+            $table->binary('character_pic')->nullable();
             $table->timestamps();
-        });
-        //foreign key
-        $table->foreign('slip_id')->references('id')->on('silps');
+
+            //foreign key
+          $table->foreign('slip_id')->references('id')->on('slips');
         $table->foreign('article_id')->references('id')->on('articles');
+        });
+
     }
 
     /**

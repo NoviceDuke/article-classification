@@ -3,18 +3,20 @@
 namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Articles\Character;
+use App\Articles\Slip;
 class Article extends Model
 {
+  public $fillable = ['title','resource','content'];
     //文章對應到多個竹簡
-    public function slip()
+    public function slips()
     {
-      return $this->belongsToMany(Slip::class);
+      return $this->hasMany(Slip::class);
     }
     //文章對應到多個文字
-    public function character()
+    public function characters()
     {
-      return $this->belongsToMany(Character::class);
+      return $this->hasMany(Character::class);
     }
-    
+
 }
