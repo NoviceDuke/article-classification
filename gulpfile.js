@@ -25,4 +25,6 @@ elixir((mix) => {
    mix.webpack('/../../../semantic-ui/dist/semantic.min.js','public/css/semantic.min.js');
     mix.sass('app.scss')
        .webpack('app.js');
+   mix.copy('node_modules/font-awesome/fonts','public/fonts');
+   mix.sass('app.scss', 'public/css/app.css');
 });
