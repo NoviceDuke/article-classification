@@ -12,8 +12,19 @@ require('laravel-elixir-vue-2');
  | file for your application as well as publishing vendor resources.
  |
  */
+ require('./semantic-ui/gulpfile.js');
+/*
+// 引入Semantic UI
+// gulp watch => 監控檔案修改
+// gulp build => 重整JS CSS 檔案
+*/
+
 
 elixir((mix) => {
+   mix.styles('/../../../semantic-ui/dist/semantic.min.css','public/css/semantic.min.css');
+   mix.webpack('/../../../semantic-ui/dist/semantic.min.js','public/css/semantic.min.js');
     mix.sass('app.scss')
        .webpack('app.js');
+   mix.copy('node_modules/font-awesome/fonts','public/fonts');
+   mix.sass('app.scss', 'public/css/app.css');
 });
