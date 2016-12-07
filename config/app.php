@@ -179,6 +179,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Excel extend
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        //Iseeder
+        Orangehill\Iseed\IseedServiceProvider::class,
 
     ],
 
