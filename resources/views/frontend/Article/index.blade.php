@@ -4,30 +4,32 @@
 
 @section('content')
 <div class="panel panel-default">
-	<div class="panel-heading">全簡表</div>
+	<div class="panel-heading">篇章表</div>
 	<div class="panel-body">
-		<p>簡條</p>
+		<p>總篇章:{{count($articles)}}</p>
+		<p>總簡條:{{count($slips)}}</p>
+
 	</div>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
 	        <thead>
 	          <tr>
 
-	              <th>簡序</th>
-								<th>內文</th>
-                <th>篇名</th>
+	              <th>篇名</th>
+								<th>出處</th>
+                <th>簡數</th>
 
 
 	          </tr>
 	        </thead>
 
 	        <tbody>
-	        @foreach($slips as $slip)
+	        @foreach($articles as $article)
 	          <tr>
 
-	            <td>{{$slip->order}}</td>
-							<td>{{$slip->content}}</td>
-              <td>{{$slip->articles->title}}</td>
+	            <td>{{$article->title}}</td>
+							<td>{{$article->resource}}</td>
+              <td>{{count($article->slips)}}</td>
 
 
 	          </tr>
