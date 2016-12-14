@@ -7,7 +7,18 @@ use App\Articles\Article;
 use App\Articles\Character;
 class Slip extends Model
 {
-   public $fillable = ['order','slip_pic','article_id','content'];
+    /*------------------------------------------------------------------------**
+    ** Entity 定義
+    **------------------------------------------------------------------------*/
+    public $fillable = [
+      'order',
+      'slip_pic',
+      'article_id',
+      'content'
+    ];
+    /*------------------------------------------------------------------------**
+    ** Relation 定義
+    **------------------------------------------------------------------------*/
     //對應到一篇文章
     public function articles()
     {
