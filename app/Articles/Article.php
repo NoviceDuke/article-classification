@@ -7,7 +7,17 @@ use App\Articles\Character;
 use App\Articles\Slip;
 class Article extends Model
 {
-  public $fillable = ['title','resource','content'];
+    /*------------------------------------------------------------------------**
+    ** Entity 定義
+    **------------------------------------------------------------------------*/
+    public $fillable = [
+      'title',
+      'resource',
+      'content'
+    ];
+    /*------------------------------------------------------------------------**
+    ** Relation 定義
+    **------------------------------------------------------------------------*/
     //文章對應到多個竹簡
     public function slips()
     {
