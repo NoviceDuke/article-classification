@@ -17,7 +17,7 @@ class CreateCharactersTable extends Migration
             $table->increments('id');
             $table->integer('slip_id')->unsigned()->nullable();
             $table->integer('article_id')->unsigned()->nullable();
-            $table->integer('order')->unsigned()->nullable();
+            $table->string('order')->nullable();
             $table->string('scribe')->nullable();
             $table->string('explanation')->nullable();
             $table->binary('character_pic')->nullable();

@@ -17,7 +17,7 @@ class CreateSlipsTable extends Migration
             $table->increments('id');
             $table->string('order');
             $table->integer('article_id')->unsigned()->nullable();
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->binary('slip_pic')->nullable();
             $table->timestamps();
 

@@ -19,7 +19,9 @@ Route::get('download','ExcelController@download');
 Route::post('importArticle','ExcelController@importArticle');
 Route::post('importSlip','ExcelController@importSlip');
 Route::post('importCharacter','ExcelController@importCharacter');
+Route::post('importSlipContent','ExcelController@importSlipContent');
 Route::post('Binding','ExcelController@relationship');
 
 
 Route::resource('article', 'Front\ArticleController');
+Route::resource('slip', 'Front\SlipController');

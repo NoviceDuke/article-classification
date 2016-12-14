@@ -54,51 +54,55 @@ class ExcelController extends Controller
             $path = $request->file('import_file')->getRealPath();
 
             $data = Excel::selectSheets('Sheet1')->load($path, function($reader) {
-            })->get()->unique('example');
+            })->get()->groupBy('title');
+
+            DB::connection()->disableQueryLog();
             //dd($data->unique('title'));
             //$articles = Article::all();
 
             $data = $data->chunk(200);
-            DB::connection()->disableQueryLog();
 
-            if(!empty($data) && $data->count()){
+            foreach($data as $key =>$qq)
+            {
 
-              $data->each(function($slips){
-                foreach($slips as $key => $value)
+              foreach($qq as $key =>$pp)
+              {
+
+                $title = $qq->keys();
+                $order = collect();
+                foreach($pp as $key =>$jj)
                 {
-                  $qq = Slip::create(array('content'=>$value->example , 'order'=>$value->order ));
-                    $articles = Article::all();
-                  foreach($articles as $article => $id)
+                  if(!$order->contains($jj->order) && !!$title->contains($jj->title) )
                   {
-                    if($id->title == $value->title)
+
+                    $kk = Slip::create(array( 'order'=>$jj->order ));
+
+                    $title->push($jj->title);
+                    $order->push($jj->order);
+
+                    $articles = Article::all();
+                  foreach($articles as $article )
+                  {
+
+                    if($article->title == $jj->title)
                     {
-                        $qq->update(['article_id'=>$id->id]);
+                        $kk->update(['article_id'=>$article->id]);
                     }
                   }
+                  }
                 }
-              });
+              }
 
-            // foreach ($data as $key => $value) {
-            // //	$insert[] = ['order'=>$value->order2, 'scribe' => $value->scribe ,'explanation'=>$value->scribe];
-            // //    Character::create(array('order'=>$value->order2, 'scribe' => $value->scribe ,'explanation'=>$value->explanation));
-            //
-            //
-            //   Slip::create(array('content'=>$value->example , 'order'=>$value->order ));
-            //
-            // }
-
+            }
+            dd('完成拉');
             dd('Insert Record successfully.');
 
           }
-            //$data = $reader->select(array('title','order2','scribe','explanation','resource'))->get();
-
-            //dd($data);
-
 
           }
 
 
-            }
+
             public function importCharacter(Request $request  )
               {
 
@@ -155,9 +159,65 @@ class ExcelController extends Controller
 
                   }
               }
-          public function relationship(Request $request  )
-          {
-            $slips = Slip::all();
+              public function importSlipContent(Request $request  )
+                {
 
-          }
+
+                  if($request->hasFile('import_file'))
+                  {
+                    $path = $request->file('import_file')->getRealPath();
+
+                    $data = Excel::selectSheets('工作表1')->load($path, function($reader) {
+                    })->get()->groupBy('example')->chunk(200);
+
+                    DB::connection()->disableQueryLog();
+                    //dd($data->unique('title'));
+                    //$articles = Article::all();
+
+                    //$data = $data->chunk(200);
+
+                    
+                    foreach($data as $key =>$qq)
+                    {
+
+                      foreach($qq as $key =>$pp)
+                      {
+
+
+                        $order = collect();
+                        foreach($pp as $key =>$jj)
+                        {
+                          if(!$order->contains($jj->order) && !empty($jj->example) )
+                          {
+                            $articles = Article::all();
+                            foreach($articles as $article)
+                            {
+                              if($article->title == $jj->title)
+                              {
+                                $slip = Slip::where('order',$jj->order)->where('article_id',$article->id)->first();
+                              //  dd($slip);
+                                  if(empty($slip->content))
+                                  {
+                                      $slip->update(['content'=>$jj->example]);
+                                  }
+                                  else
+                                  $slip->update(['content'=>($slip->content.$jj->example)]);
+                                   $order->push($jj->order);
+                                }
+
+
+                            }
+
+                          }
+                        }
+                      }
+
+                    }
+                    dd('完成拉');
+
+
+                  }
+
+                  }
+
   }
