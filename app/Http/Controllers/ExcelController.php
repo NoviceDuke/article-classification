@@ -167,7 +167,7 @@ class ExcelController extends Controller
                   {
                     $path = $request->file('import_file')->getRealPath();
 
-                    $data = Excel::selectSheets('Sheet1')->load($path, function($reader) {
+                    $data = Excel::selectSheets('工作表1')->load($path, function($reader) {
                     })->get()->groupBy('example')->chunk(200);
 
                     DB::connection()->disableQueryLog();
@@ -176,7 +176,7 @@ class ExcelController extends Controller
 
                     //$data = $data->chunk(200);
 
-
+                    
                     foreach($data as $key =>$qq)
                     {
 
