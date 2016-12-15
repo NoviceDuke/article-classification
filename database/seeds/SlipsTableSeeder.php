@@ -35481,6 +35481,26 @@ class SlipsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2016-12-14 21:26:54',
             ),
+            45 => 
+            array (
+                'id' => 3546,
+                'order' => '40背',
+                'article_id' => 5,
+                'content' => NULL,
+                'slip_pic' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            46 => 
+            array (
+                'id' => 3547,
+                'order' => '27背',
+                'article_id' => 18,
+                'content' => NULL,
+                'slip_pic' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

@@ -15,7 +15,7 @@ class SlipController extends Controller
     public function index()
     {
         //
-        $slips = Slip::paginate(20)->links();
+        $slips = Slip::orderBy('id','asc')->paginate(20);
         return view('frontend.slip.index', compact('slips'));
     }
 
