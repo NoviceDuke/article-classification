@@ -8,6 +8,9 @@
 	<div class="panel-body">
 		<p>總篇章:{{count($articles)}}</p>
 		<p>總簡條:{{count($slips)}}</p>
+		<p>總字數:{{count($characters)}}<p>
+
+
 
 	</div>
 	<div class="table-responsive">
@@ -18,6 +21,7 @@
 	              <th>篇名</th>
 								<th>出處</th>
                 <th>簡數</th>
+								<th>字數</th>
 
 
 	          </tr>
@@ -30,7 +34,7 @@
 	            <td>{{$article->title}}</td>
 							<td>{{$article->resource}}</td>
               <td>{{count($article->slips)}}</td>
-
+							<td>{{count($article->characters)}}</td>
 
 	          </tr>
 	        @endforeach
