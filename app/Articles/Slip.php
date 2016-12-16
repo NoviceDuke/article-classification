@@ -20,7 +20,7 @@ class Slip extends Model
     ** Relation 定義
     **------------------------------------------------------------------------*/
     //對應到一篇文章
-    public function articles()
+    public function article()
     {
       return $this->belongsTo(Article::class,'article_id');
     }

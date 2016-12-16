@@ -22,15 +22,15 @@ class Character extends Model
       'title'
     ];
     /*------------------------------------------------------------------------**
-    ** Relation定義                                                                      
+    ** Relation定義
     **------------------------------------------------------------------------*/
     //對應到一篇文章
-    public function articles()
+    public function article()
     {
       return $this->belongsTo(Article::class);
     }
     //對應到一個竹簡
-    public function slips()
+    public function slip()
     {
       return $this->belongsTo(Slip::class);
     }
