@@ -26,7 +26,7 @@
 	        @foreach($slips as $slip)
 	          <tr>
 
-	            <td>{{$slip->id}}</td>
+	            <td>{{$slip->article->title}}</td>
 							<td>{{$slip->order}}</td>
               <td>{{$slip->content}}</td>
 
