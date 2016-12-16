@@ -20,8 +20,9 @@ class ArticleController extends Controller
         //
         $slips = Slip::all();
        $articles = Article::all();
+       $characters = Character::all();
       //  $characters = Character::all();
-        return view('frontend.article.index' , compact('slips','articles') );
+        return view('frontend.article.index' , compact('slips','articles','characters') );
     }
 
     /**

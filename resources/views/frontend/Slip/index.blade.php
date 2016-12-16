@@ -35,7 +35,7 @@
 	        @endforeach
 	        </tbody>
 	    </table>
-      <p>{{$slips->links()}}<p>
+      {{$slips->links()}}
 	</div>
 </div>
 @endsection

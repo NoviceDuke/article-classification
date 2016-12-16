@@ -110,51 +110,36 @@ class ExcelController extends Controller
                   {
                     $path = $request->file('import_file')->getRealPath();
 
-                    $data = Excel::selectSheets('Sheet1')->load($path, function($reader) {
-                    })->get();
+                    $data = Excel::selectSheets('工作表1')->load($path, function($reader) {
+                    })->get()->chunk(200);
                     //dd($data->unique('title'));
                     //$articles = Article::all();
-
-                    $data = $data->chunk(200);
-                    DB::connection()->disableQueryLog();
-
-                    if(!empty($data) && $data->count()){
-
-                      $data->each(function($Characters){
-                        foreach($Characters as $key => $value)
-                        {
-                          $pp = Character::create(array('scribe'=>$value->scribe,'explanation'=>$value->explanation,'content'=>$value->example , 'order'=>$value->order2 ));
+                      DB::connection()->disableQueryLog();
+                  //  dd($data);
+                    foreach($data as $chunks)
+                    {
+                      foreach($chunks as $chunk)
+                      {
+                        if(!empty($chunk->example)){
+                          $character = Character::create(array('scribe'=>$chunk->scribe,'explanation'=>$chunk->explanation,'content'=>$chunk->example , 'order'=>$chunk->order2 ));
                             $articles = Article::all();
-
-                          foreach($articles as $article )
-                          {
-                            if($article->title == $value->title)
+                            foreach($articles as $article )
                             {
-                            //dd($article->id);
-                               $pp->update(['article_id'=>$article->id]);
-                                 $slips = Slip::where('article_id',$article->id)->where('order',$value->order)->first();
-                               $pp->update(['slip_id'=>$slips->id]);
+                              if($article->title == $chunk->title)
+                              {
 
-                            }
-                          }
+                                 $character->update(['article_id'=>$article->id]);
+                                   $slips = Slip::where('article_id',$article->id)->where('order',$chunk->order)->first();
+                                $character->update(['slip_id'=>$slips->id]);
+
+                              }
+                            }  
                         }
-                      });
 
-                    // foreach ($data as $key => $value) {
-                    // //	$insert[] = ['order'=>$value->order2, 'scribe' => $value->scribe ,'explanation'=>$value->scribe];
-                    // //    Character::create(array('order'=>$value->order2, 'scribe' => $value->scribe ,'explanation'=>$value->explanation));
-                    //
-                    //
-                    //   Slip::create(array('content'=>$value->example , 'order'=>$value->order ));
-                    //
-                    // }
+                      }
+                    }
+                      dd('Insert Record successfully.');
 
-                    dd('Insert Record successfully.');
-
-                  }
-                    //$data = $reader->select(array('title','order2','scribe','explanation','resource'))->get();
-
-                    //dd($data);
 
 
                   }
@@ -176,7 +161,7 @@ class ExcelController extends Controller
 
                     //$data = $data->chunk(200);
 
-                    
+
                     foreach($data as $key =>$qq)
                     {
 
