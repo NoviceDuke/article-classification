@@ -8,7 +8,22 @@ use App\Articles\Slip;
 
 class Character extends Model
 {
-    public $fillable = ['article_id','slip_id','scribe','explanation','order','character_pic'];
+    /*------------------------------------------------------------------------**
+    ** Entity定義
+    **------------------------------------------------------------------------*/
+    public $fillable = [
+      'article_id',
+      'slip_id',
+      'scribe',
+      'explanation',
+      'order',
+      'character_pic',
+      'slip_order',
+      'title'
+    ];
+    /*------------------------------------------------------------------------**
+    ** Relation定義                                                                      
+    **------------------------------------------------------------------------*/
     //對應到一篇文章
     public function articles()
     {
