@@ -22,6 +22,11 @@ Route::post('importCharacter','ExcelController@importCharacter');
 Route::post('importSlipContent','ExcelController@importSlipContent');
 Route::post('Binding','ExcelController@relationship');
 
+Route::group(['prefix'=>'frontend','namespace'=>'Front','as'=>'frontend.'],function(){
 
-Route::resource('article', 'Front\ArticleController');
-Route::resource('slip', 'Front\SlipController');
+
+    Route::resource('article', 'ArticleController');
+    Route::resource('slip', 'SlipController');
+
+
+});

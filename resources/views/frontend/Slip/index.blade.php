@@ -10,7 +10,7 @@
 
 	</div>
 	<div class="table-responsive">
-		<table class="table table-hover table-striped">
+		<table class="table table-hover table-striped ch">
 	        <thead>
 	          <tr>
 
@@ -26,7 +26,7 @@
 	        @foreach($slips as $slip)
 	          <tr>
 
-	            <td>{{$slip->id}}</td>
+	            <td>{{$slip->article->title}}</td>
 							<td>{{$slip->order}}</td>
               <td>{{$slip->content}}</td>
 
