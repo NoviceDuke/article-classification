@@ -6,12 +6,14 @@
 
         @font-face {
             font-family: 'shigon';
-            src: url('fonts/chu6.tte'), url('fonts/chucdpeudpn6.tbl'), url('fonts/chueudccjn6.tbl')
+            src: url('{{asset('fonts/chu6.tte')}}'),url('{{asset('fonts/chucdpeudpn6.tbl')}}') ,
+            url('{{asset('fonts/chueudccjn6.tbl')}}')
+             
         }
         .title {} body {
             font-family: 'shigon';
         }
-        #text {
+        .ch {
             font-family: 'shigon';
         }
 
