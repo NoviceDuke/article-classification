@@ -16,6 +16,7 @@
 
 	              <th>篇名</th>
 								<th>簡序</th>
+								<th>字數</th>
                 <th>內容</th>
 
 
@@ -28,6 +29,7 @@
 
 	            <td>{{$slip->article->title}}</td>
 							<td>{{$slip->order}}</td>
+							<td>{{count($slip->characters)}}</td>
               <td>{{$slip->content}}</td>
 
 
