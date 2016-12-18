@@ -55,6 +55,9 @@ class ArticleController extends Controller
     public function show($id)
     {
         //
+        $articles = Article::where('id',$id)->first();
+
+        return view('frontend.article.show' , compact('articles'));
     }
 
     /**

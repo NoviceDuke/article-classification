@@ -31,7 +31,7 @@
 	        @foreach($articles as $article)
 	          <tr>
 
-	            <td>{{$article->title}}</td>
+	            <td><a href={{route('frontend.article.show',$article->id)}}">{{$article->title}}</a></td>
 							<td>{{$article->resource}}</td>
               <td>{{count($article->slips)}}</td>
 							<td>{{count($article->characters)}}</td>
