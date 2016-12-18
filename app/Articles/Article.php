@@ -28,5 +28,8 @@ class Article extends Model
     {
       return $this->hasMany(Character::class);
     }
-
+    public function images()
+    {
+      return $this->hasMany(Image::class);
+    }
 }
