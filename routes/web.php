@@ -27,6 +27,7 @@ Route::group(['prefix'=>'frontend','namespace'=>'Front','as'=>'frontend.'],funct
 
     Route::resource('article', 'ArticleController');
     Route::resource('slip', 'SlipController');
+    Route::resource('character' ,'CharacterController');
 
 
 });
