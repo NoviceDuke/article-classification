@@ -20,7 +20,7 @@ class CreateCharactersTable extends Migration
             $table->string('order')->nullable();
             $table->string('scribe')->nullable();
             $table->string('explanation')->nullable();
-            $table->binary('character_pic')->nullable();
+            $table->text('character_pic')->nullable();
             $table->timestamps();
 
             //foreign key
