@@ -17,11 +17,12 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image_path')->nullable();
-            $table->integer('article_id')->nullable();
+            $table->integer('article_id')->unsigned()->nullable();
             $table->timestamps();
 
             //foreign key
             $table->foreign('article_id')->references('id')->on('articles');
+
         });
     }
 
