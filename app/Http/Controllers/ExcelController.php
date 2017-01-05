@@ -133,7 +133,7 @@ class ExcelController extends Controller
                                 $character->update(['slip_id'=>$slips->id]);
 
                               }
-                            }  
+                            }
                         }
 
                       }
@@ -204,5 +204,55 @@ class ExcelController extends Controller
                   }
 
                   }
+                  public function importCharacterPic(Request $request  )
+                    {
+
+
+                      if($request->hasFile('import_file'))
+                      {
+                        $path = $request->file('import_file')->getRealPath();
+
+                        $data = Excel::selectSheets('工作表1')->load($path, function($reader) {
+                        })->get()->groupBy('example')->chunk(200);
+
+                        DB::connection()->disableQueryLog();
+                        //dd($data->unique('title'));
+                        //$articles = Article::all();
+
+                        //$data = $data->chunk(200);
+
+
+                        foreach($data as $key =>$qq)
+                        {
+
+                          foreach($qq as $key =>$pp)
+                          {
+
+                            foreach ($pp as $key => $jj) {
+                              $article = Article::where('title',$jj->title)->first();
+                              if(!empty($article))
+                              {$slip = Slip::where('article_id',$article->id)->where('order',$jj->order1)->first();
+                              if(!empty($slip)&&!empty($article))
+                              {$character = Character::where('article_id',$article->id)->where('slip_id',$slip->id)->where('order', $jj->order2)->first();
+
+                              if(!empty($character))
+                              $character->update(['character_pic'=>($jj->pic)]);}
+                            }
+
+
+                              }
+                            }
+
+                          }
+
+
+
+                        }
+                        dd('完成拉');
+
+
+                      }
+
+
 
   }

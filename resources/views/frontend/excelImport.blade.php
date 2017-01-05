@@ -38,6 +38,12 @@
                  {{ csrf_field() }}
    <button class="btn btn-primary">竹簡內容</button>
   </form>
+  <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ URL::to('importCharacterPic') }}" class="form-horizontal" method="post" enctype="multipart/form-data" >
+   <input type="file" name="import_file" />
+
+                 {{ csrf_field() }}
+   <button class="btn btn-primary">字圖</button>
+  </form>
  </div>
 </body>
 </html>
