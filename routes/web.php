@@ -20,6 +20,7 @@ Route::post('importArticle','ExcelController@importArticle');
 Route::post('importSlip','ExcelController@importSlip');
 Route::post('importCharacter','ExcelController@importCharacter');
 Route::post('importSlipContent','ExcelController@importSlipContent');
+Route::post('importCharacterPic','ExcelController@importCharacterPic');
 Route::post('Binding','ExcelController@relationship');
 
 Route::group(['prefix'=>'frontend','namespace'=>'Front','as'=>'frontend.'],function(){
